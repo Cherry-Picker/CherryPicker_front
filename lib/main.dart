@@ -1,9 +1,11 @@
-import 'package:cherrypicker/PlusAccount/PlusAccount.dart';
+import 'package:cherrypicker/PlusAccount/PlusAccountScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
+var height_whole = 760;
+var width_whole = 360;
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PlusAccount(),
+      home: PlusAccountScreen(),
     );
   }
 }
