@@ -11,6 +11,8 @@ class PlusAccountScreen extends StatefulWidget {
 }
 
 class _PlusAccountState extends State<PlusAccountScreen> {
+  var _bankImages = [''];
+  var touched = [false,false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false , false, false, false];
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height ;
@@ -30,8 +32,9 @@ class _PlusAccountState extends State<PlusAccountScreen> {
           child: Column(
             children: [
               Container(
+                color : Colors.white,
                 width: width * width_whole,
-                color: Colors.white,
+
                 child: Row(
                   children: [
                     Padding(
@@ -93,6 +96,7 @@ class _PlusAccountState extends State<PlusAccountScreen> {
               Padding(
                 padding: EdgeInsets.only(top : 12 * h_percent),
                 child: Container(
+
                   width: width - 50 * w_percent,
                   height: (429 + 60) * h_percent,
                   child: GridView.builder(
@@ -106,26 +110,54 @@ class _PlusAccountState extends State<PlusAccountScreen> {
                     ),
 
                     itemBuilder: (BuildContext context, int index){
-                      return Container(
-                        color: Colors.white,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(top : 3.1 *h_percent),
-                              child: Container(
+                      return GestureDetector(
+                        onTap: (){
+                          //한개씩만 클릭되도록 하기 위함
+                          touched = [false,false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false , false, false, false];
+                          touched[index] = !touched[index];
+                          setState(() {
 
-                                width: 33.43 * w_percent,
-                                height: 33.43 * h_percent,
-                                child: Image.asset("imgs/hanabank.png"),
-
-                              ),
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(10.0)
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(top : 5 * h_percent),
-                              child: Text("하나", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color : Colors.black),),
-                            )
-                          ],
+                            border: Border.all(
+                                width: 2 * w_percent,
+                                color : touched[index]? const Color(0xff435CFA).withOpacity(0.25) : Colors.transparent
+                            ),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: touched[index]? Colors.grey.withOpacity(0.1) : Colors.transparent,
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                                offset: const Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top : 3.1 *h_percent),
+                                child: Container(
+
+                                  width: 33.43 * w_percent,
+                                  height: 33.43 * h_percent,
+                                  child: Image.asset("imgs/hanabank.png"),
+
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top : 1 * h_percent),
+                                child: Text("하나", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color : Colors.black),),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },

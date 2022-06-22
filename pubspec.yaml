@@ -66,6 +66,23 @@ flutter:
   assets:
     - imgs/cardimg.png
     - imgs/hanabank.png
+    - imgs/sinhanbank.png
+    - imgs/nhbank.png
+    - imgs/deagubank.png
+    - imgs/guangjubank.png
+    - imgs/ibkbank.png
+    - imgs/kakaobank.png
+    - imgs/kdbbank.png
+    - imgs/kookminbank.png
+    - imgs/newbank.png
+    - imgs/nhbank.png
+    - imgs/nobank.png
+    - imgs/scbank.png
+    - imgs/sinhanbank.png
+    - imgs/sinhyupbank.png
+    - imgs/suhyupbank.png
+    - imgs/whybank.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
