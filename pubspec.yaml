@@ -84,6 +84,7 @@ flutter:
     - imgs/sinhyupbank.png
     - imgs/suhyupbank.png
     - imgs/whybank.png
+    - imgs/cherrypickerlogo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

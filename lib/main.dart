@@ -1,4 +1,5 @@
 import 'package:cherrypicker/Login/IdPasswordScreen.dart';
+import 'package:cherrypicker/Login/LoginScreen2.dart';
 import 'package:cherrypicker/Login/SignupScreen.dart';
 import 'package:cherrypicker/PlusAccount/PlusAccountScreen.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
       ),
-      home: SignupScreen(),
+      home: LoginScreen2(),
     );
   }
 }
