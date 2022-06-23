@@ -14,6 +14,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
 
+  var list = [false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height ;
@@ -22,6 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final w_percent = width/ width_whole;
     String? selectedValue ;
     List<String> items = ["SKT", "KT", "LG U+", "SKT 알뜰폰", "KT 알뜰폰", "LG 알뜰폰"];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -198,7 +200,28 @@ class _SignupScreenState extends State<SignupScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CherryPickerButton.MainButton(h_percent * 50, h_percent * 312, "확인")
+                  Container(
+                    width: 312 * w_percent,
+                    height: 50 * h_percent,
+                    child: IconButton(
+                      padding: EdgeInsets.zero, // 패딩 설정
+                      constraints: BoxConstraints(), // constraints
+                      onPressed: () {
+                        list = [false, false, false, false, false];
+                        showModalBottomSheet(shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+
+                        ),context: context, builder: (BuildContext bottomsheetcontext){
+
+                          return _sheet(h_percent, w_percent);
+
+                        });
+
+                      },
+                      icon: CherryPickerButton.MainButton(h_percent * 50, h_percent * 312, "확인"),
+                    ),
+                  )
+
                 ],
               ),
             )
@@ -210,4 +233,211 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
+  Widget _sheet(double h_percent, double w_percent){
+    return StatefulBuilder(
+      builder: (BuildContext context, setState) {
+        return Container(
+          color : Colors.white,
+          width: 360 * w_percent,
+          height: 457 * h_percent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top : 19 * h_percent),
+                child: Container(
+                  height: 62 * h_percent,
+                  width: 324 * w_percent,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 1,
+                        color : Color(0xffDDE3EC)
+                    ),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(5.0)
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding:EdgeInsets.only(left : 13 * w_percent),
+                        child: Container(
+                          width : 30 * w_percent,
+                          height: 30 * h_percent,
+                          child: IconButton(
+                            padding: EdgeInsets.zero, // 패딩 설정
+                            constraints: BoxConstraints(), // constraints
+                            onPressed: () {
+                              if(list[0] == false){
+                                list = [true, true, true, true, true];
+                                setState(() {
+
+                                });
+                              }else{
+                                list = [false, false, false, false, false];
+                                setState(() {
+
+                                });
+                              }
+
+                            },
+                            icon: Icon(Icons.check_circle_outline_rounded, size : 35, color : list[0]? CherryPickerColors.maincolor:Color(0xffDDE3EC)),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:EdgeInsets.only(left : 11 * w_percent),
+                        child: Text("약관에 모두 동의", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color : Colors.black),),
+                      )
+
+
+
+                    ],
+                  )
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top : 29 *h_percent),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left : 33 * w_percent),
+                      child: Container(
+                        width : 30 * w_percent,
+                        height: 30 * h_percent,
+                        child: IconButton(
+                          padding: EdgeInsets.zero, // 패딩 설정
+                          constraints: BoxConstraints(), // constraints
+                          onPressed: () {
+                            list[1] = !list[1];
+                            setState(() {
+
+                            });
+                          },
+                          icon: Icon(Icons.check_rounded, size : 30, color : list[1]? CherryPickerColors.maincolor : Color(0xffDDE3EC)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left : 20 * w_percent),
+                      child: Text("체리피커 필수 항목 모두 동의", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color : Colors.black),),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+              padding: EdgeInsets.only(top: 5 * h_percent),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left : 33 * w_percent),
+                      child: Container(
+                        width : 30 * w_percent,
+                        height: 30 * h_percent,
+                        child: IconButton(
+                          padding: EdgeInsets.zero, // 패딩 설정
+                          constraints: BoxConstraints(), // constraints
+                          onPressed: () {
+                            list[2] = !list[2];
+                            setState(() {
+
+                            });
+                          },
+                          icon: Icon(Icons.check_rounded, size : 30, color : list[2]? CherryPickerColors.maincolor : Color(0xffDDE3EC)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left : 20 * w_percent),
+                      child: Text("휴대폰/카드 본인확인 서비스", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color : Colors.black),),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5 * h_percent),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left : 33 * w_percent),
+                      child: Container(
+                        width :30 * w_percent,
+                        height: 30 * h_percent,
+                        child: IconButton(
+                          padding: EdgeInsets.zero, // 패딩 설정
+                          constraints: BoxConstraints(), // constraints
+                          onPressed: () {
+                            list[3] = !list[3];
+                            setState(() {
+
+                            });
+                          },
+                          icon: Icon(Icons.check_rounded, size : 30, color :list[3]? CherryPickerColors.maincolor : Color(0xffDDE3EC)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left : 20 * w_percent),
+                      child: Text("맞춤형 광고 선택 동의", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color : Colors.black),),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding:EdgeInsets.only(top: 5 * h_percent),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left : 33 * w_percent),
+                      child: Container(
+                        width : 30 * w_percent,
+                        height: 30 * h_percent,
+                        child: IconButton(
+                          padding: EdgeInsets.zero, // 패딩 설정
+                          constraints: BoxConstraints(), // constraints
+                          onPressed: () {
+                            list[4] = !list[4];
+                            setState(() {
+
+                            });
+                          },
+                          icon: Icon(Icons.check_rounded, size : 30, color : list[4]? CherryPickerColors.maincolor : Color(0xffDDE3EC)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left : 20 * w_percent),
+                      child: Text("마케팅 정보 수신 선택 동의", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color : Colors.black),),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top : 119 * h_percent),
+                child: Container(
+                  height: 50 * h_percent,
+                  width: 336 * w_percent,
+                  child:IconButton(
+                    padding: EdgeInsets.zero, // 패딩 설정
+                    constraints: BoxConstraints(), // constraints
+                    onPressed: () {},
+                    icon: CherryPickerButton.MainButton(50 * h_percent, 336 * w_percent, "다음"),
+                  ),
+
+
+                ),
+              )
+
+            ],
+
+          ),
+        );
+      }
+    );
+  }
+
 }
