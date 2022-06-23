@@ -1,3 +1,4 @@
+import 'package:cherrypicker/Login/IdPasswordScreen.dart';
 import 'package:cherrypicker/Login/SignupScreen.dart';
 import 'package:cherrypicker/PlusAccount/PlusAccountScreen.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        canvasColor: Colors.transparent,
+        primarySwatch: Colors.orange,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -26,9 +31,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
       ),
-      home: SignupScreen(),
+      home: IdPasswordScreen(),
     );
   }
 }

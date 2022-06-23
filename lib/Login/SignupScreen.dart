@@ -26,6 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
 
     return Scaffold(
+      resizeToAvoidBottomInset :false,
       appBar: AppBar(
       elevation: 0.0,
       backgroundColor: Colors.white,
@@ -38,15 +39,15 @@ class _SignupScreenState extends State<SignupScreen> {
           children:[
             Padding(
               padding: EdgeInsets.only(top : 30 * h_percent, left : 25 * w_percent),
-              child: const Text("입력한 정보가 맞다면", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color : Colors.black),),
+              child: const Text("입력한 정보가 맞다면", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700, color : Colors.black),),
             ),
             Padding(
               padding: EdgeInsets.only(left: 25 * w_percent),
-              child: const Text("아래 확인 버튼을 눌러주세요", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color : Colors.black),),
+              child: const Text("아래 확인 버튼을 눌러주세요", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700, color : Colors.black),),
             ),
             Padding(
               padding: EdgeInsets.only(top : 55 * h_percent,left: 25 * w_percent),
-              child: const Text("휴대폰 번호", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color : Colors.black),),
+              child: const Text("휴대폰 번호", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color : Colors.black),),
             ),
             Padding(
               padding: EdgeInsets.only( left: 24 * w_percent),
@@ -71,7 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             Padding(
               padding:EdgeInsets.only(top : 16 * h_percent, left: 25 * w_percent),
-              child: const Text("통신사" , style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color : Colors.black),),
+              child: const Text("통신사" , style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color : Colors.black),),
             ),
             Padding(
               padding: EdgeInsets.only( left: 25 * w_percent),
@@ -125,7 +126,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(top : 16 * h_percent, left: 25 * w_percent),
-              child: const Text("주민등록번호", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color : Colors.black),),
+              child: const Text("주민등록번호", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color : Colors.black),),
             ),
             Row(
 
@@ -173,7 +174,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             Padding(
               padding:EdgeInsets.only(top : 16 * h_percent, left: 25 * w_percent),
-              child: const Text("이름", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color : Colors.black),),
+              child: const Text("이름", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color : Colors.black),),
             ),
             Padding(
               padding: EdgeInsets.only( left: 24 * w_percent),
