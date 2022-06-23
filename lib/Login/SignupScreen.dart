@@ -1,5 +1,6 @@
 import 'package:cherrypicker/CDS/CherryPickerButton.dart';
 import 'package:cherrypicker/CDS/CherryPickerColors.dart';
+import 'package:cherrypicker/Login/IdPasswordScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -13,7 +14,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-
+  var tel;
   var list = [false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final h_percent = height/height_whole;
     final w_percent = width/ width_whole;
     String? selectedValue ;
+
     List<String> items = ["SKT", "KT", "LG U+", "SKT 알뜰폰", "KT 알뜰폰", "LG 알뜰폰"];
 
 
@@ -55,6 +57,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: 312 * w_percent,
                 height: 30 * h_percent,
                 child: TextField(
+                  cursorColor: CherryPickerColors.maincolor,
+                  onChanged: (txt){
+                    tel = txt;
+
+                  },
+                  onSubmitted: (txt){
+                    tel = txt;
+                  },
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color : Color(0xffDDE3EC)),
@@ -137,6 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     width: 120 * w_percent,
                     height: 30 * h_percent,
                     child: TextField(
+                      cursorColor: CherryPickerColors.maincolor,
                       decoration: InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color : Color(0xffDDE3EC)),
@@ -156,6 +167,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: 120 * w_percent,
                   height: 30 * h_percent,
                   child: TextField(
+                    cursorColor: CherryPickerColors.maincolor,
                     decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color : Color(0xffDDE3EC)),
@@ -182,6 +194,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: 312 * w_percent,
                 height: 30 * h_percent,
                 child: TextField(
+                  cursorColor: CherryPickerColors.maincolor,
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color : Color(0xffDDE3EC)),
@@ -425,7 +438,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   child:IconButton(
                     padding: EdgeInsets.zero, // 패딩 설정
                     constraints: BoxConstraints(), // constraints
-                    onPressed: () {},
+                    onPressed: () {
+
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => IdPasswordScreen(tel)),
+                      );
+                    },
                     icon: CherryPickerButton.MainButton(50 * h_percent, 336 * w_percent, "다음"),
                   ),
 

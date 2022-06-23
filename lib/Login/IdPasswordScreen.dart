@@ -1,18 +1,26 @@
+import 'dart:convert';
+
 import 'package:cherrypicker/CDS/CherryPickerButton.dart';
 import 'package:cherrypicker/CDS/CherryPickerColors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../main.dart';
 
 class IdPasswordScreen extends StatefulWidget {
-  const IdPasswordScreen({Key? key}) : super(key: key);
+  final String tel;
+  const IdPasswordScreen(this.tel);
 
   @override
   _IdPasswordScreenState createState() => _IdPasswordScreenState();
 }
 
 class _IdPasswordScreenState extends State<IdPasswordScreen> {
+  var id;
+  var pw;
+  var nickname;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height ;
@@ -44,6 +52,12 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                     width: 312 * w_percent,
                     height: 54 * h_percent,
                     child: TextField(
+                      onSubmitted: (txt){
+                        id = txt;
+                      },
+                      onChanged: (txt){
+                        id = txt;
+                      },
                       cursorColor: CherryPickerColors.maincolor,
                       decoration: InputDecoration(
 
@@ -77,8 +91,16 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                     width: 312 * w_percent,
                     height: 54 * h_percent,
                     child: TextField(
+                      onSubmitted: (txt){
+                        pw = txt;
+                      },
+                      onChanged: (txt){
+                        pw = txt;
+                      },
+                      obscureText: true,
                       cursorColor: CherryPickerColors.maincolor,
                       decoration: InputDecoration(
+
 
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
@@ -88,6 +110,7 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                             borderSide: BorderSide(color: CherryPickerColors.maincolor),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
+
 
 
                           filled: true,
@@ -111,6 +134,7 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                     width: 312 * w_percent,
                     height: 54 * h_percent,
                     child: TextField(
+                      obscureText: true,
                       cursorColor: CherryPickerColors.maincolor,
                       decoration: InputDecoration(
 
@@ -144,6 +168,12 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                     width: 312 * w_percent,
                     height: 54 * h_percent,
                     child: TextField(
+                      onSubmitted: (txt){
+                        nickname = txt;
+                      },
+                      onChanged: (txt){
+                        nickname = txt;
+                      },
                       cursorColor: CherryPickerColors.maincolor,
                       decoration: InputDecoration(
 
@@ -180,7 +210,7 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                       constraints: BoxConstraints(), // constraints
                       onPressed: () {
 
-
+                        _sendSignUp();
                       },
                       icon: CherryPickerButton.MainButton(50 * h_percent, 312 * w_percent, '확인')
                     ),
@@ -194,5 +224,24 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _sendSignUp() async {
+
+    var map = new Map<String, dynamic>();
+    map['id'] = id;
+    map['pw'] =pw;
+    map['nickname'] = nickname;
+    map['tel'] = widget.tel;
+
+    var map_json = json.encode(map);
+    final response = await http.post(
+
+        Uri.parse("http://118.67.133.146:5000/user/signup"),
+        body: map_json,
+        headers: { "Content-Type": "application/json"}
+    );
+    print(response.statusCode.toString());
+
   }
 }
