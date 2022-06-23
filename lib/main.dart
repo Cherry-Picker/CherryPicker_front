@@ -1,3 +1,4 @@
+import 'package:cherrypicker/Login/SignupScreen.dart';
 import 'package:cherrypicker/PlusAccount/PlusAccountScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PlusAccountScreen(),
+      home: SignupScreen(),
     );
   }
 }
