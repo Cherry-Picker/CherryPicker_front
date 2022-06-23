@@ -97,6 +97,9 @@ flutter:
     - imgs/uricard.png
     - imgs/busanbank.png
     - imgs/sanupcard.png
+    - imgs/next_icon.png
+    - imgs/samsungcard.png
+    - imgs/loadingimage.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
