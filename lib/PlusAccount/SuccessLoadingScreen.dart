@@ -1,4 +1,5 @@
 import 'package:cherrypicker/CDS/CherryPickerColors.dart';
+import 'package:cherrypicker/Main/RecommendScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -35,6 +36,7 @@ class _SuccessLoadingScreenState extends State<SuccessLoadingScreen> {
     final width = MediaQuery.of(context).size.width ;
     final h_percent = height/height_whole;
     final w_percent = width/ width_whole;
+    print(widget.cards.toString());
 
     return Scaffold(
         body: Container(
@@ -144,6 +146,11 @@ class _SuccessLoadingScreenState extends State<SuccessLoadingScreen> {
                     padding: EdgeInsets.zero, // 패딩 설정
                     constraints: BoxConstraints(), // constraints
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RecommendScreen(widget.cards)),
+
+                      );
 
 
                     },

@@ -167,6 +167,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: 120 * w_percent,
                   height: 30 * h_percent,
                   child: TextField(
+                    obscureText: true,
                     cursorColor: CherryPickerColors.maincolor,
                     decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(

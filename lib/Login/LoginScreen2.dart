@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cherrypicker/CDS/CherryPickerColors.dart';
 import 'package:cherrypicker/Login/SignupScreen.dart';
+import 'package:cherrypicker/PlusAccount/PlusAccountScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -124,7 +125,13 @@ class _LoginScreen2State extends State<LoginScreen2> {
                     padding: EdgeInsets.zero, // 패딩 설정
                     constraints: BoxConstraints(), // constraints
                     onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PlusAccountScreen()),
+                      );
                       _sendData();
+
 
                     },
                     icon: CherryPickerButton.MainButton(h_percent * 50, h_percent * 312, "로그인"),

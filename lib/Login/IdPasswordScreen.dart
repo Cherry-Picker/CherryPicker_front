@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:cherrypicker/CDS/CherryPickerButton.dart';
 import 'package:cherrypicker/CDS/CherryPickerColors.dart';
+import 'package:cherrypicker/Login/LoginScreen2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../main.dart';
 
@@ -20,6 +22,17 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
   var id;
   var pw;
   var nickname;
+  late FToast fToast;
+
+  @override
+  void initState() {
+
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,6 +224,13 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
                       onPressed: () {
 
                         _sendSignUp();
+                        fToast.showToast(child: toast, gravity: ToastGravity.CENTER, toastDuration: Duration(seconds:3));
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginScreen2()),
+                        );
+
                       },
                       icon: CherryPickerButton.MainButton(50 * h_percent, 312 * w_percent, '확인')
                     ),
@@ -244,4 +264,19 @@ class _IdPasswordScreenState extends State<IdPasswordScreen> {
     print(response.statusCode.toString());
 
   }
+  Widget toast = Opacity(opacity: 0.8,
+      child: Container(
+        decoration: BoxDecoration(
+          color : CherryPickerColors.maincolor,
+          borderRadius: BorderRadius.all(
+              Radius.circular(10.0)
+          ),
+        ),
+        width : 248,
+        height:  60,
+
+        child: Center(
+          child: Text("회원가입 성공", style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400, fontFamily: 'MainFont', color : Colors.white) ),
+        ),)
+  );
 }

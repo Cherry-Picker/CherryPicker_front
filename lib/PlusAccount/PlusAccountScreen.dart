@@ -191,7 +191,7 @@ class _PlusAccountState extends State<PlusAccountScreen> {
                 padding: EdgeInsets.zero, // 패딩 설정
                 constraints: BoxConstraints(), // constraints
                 onPressed: () {
-                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoadingScreen(touched)),
