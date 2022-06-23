@@ -11,8 +11,9 @@ class PlusAccountScreen extends StatefulWidget {
 }
 
 class _PlusAccountState extends State<PlusAccountScreen> {
-  var _bankImages = [''];
-  var touched = [false,false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false , false, false, false];
+  var _bankImages = ['imgs/nhbank.png', 'imgs/uricard.png', 'imgs/sinhanbank.png','imgs/kookminbank.png',  'imgs/hanabank.png', 'imgs/ibkbank.png', 'imgs/kakaobank.png', 'imgs/newbank.png','imgs/bccard.png', 'imgs/busanbank.png' , 'imgs/busanbank.png', 'imgs/guangjubank.png', 'imgs/guangjubank.png', 'imgs/sinhyupbank.png', 'imgs/scbank.png', 'imgs/sanupcard.png', 'imgs/deagubank.png', 'imgs/deagubank.png','imgs/nobank.png', 'imgs/suhyupbank.png', 'imgs/hdcard.png',  'imgs/lottecard.png', 'imgs/sbicard.png','imgs/uantacard.png','imgs/citicard.png', 'imgs/tosscard.png' ];
+  var _bankNames= ['농협카드', '우리카드', '신한카드', '국민카드', '하나카드', '기업카드', '카카오뱅크카드', 'MG새마을카드', 'BC카드', '부산카드', '경남카드', '광주카드', '전북카드', '신협카드', 'SC제일카드', '산업카드', '대구카드', '대구카드', '우체국카드', '수협카드', '현대카드','롯데카드', 'SBI저축카드', '유안타증권카드', '씨티카드', '토스뱅크카드'];
+  var touched = [false,false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false , false, false, false, false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height ;
@@ -101,7 +102,8 @@ class _PlusAccountState extends State<PlusAccountScreen> {
                   height: (429 + 60) * h_percent,
                   child: GridView.builder(
 
-                    itemCount: 20,
+
+                    itemCount: 26,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         childAspectRatio: 96 / 60,
@@ -113,7 +115,7 @@ class _PlusAccountState extends State<PlusAccountScreen> {
                       return GestureDetector(
                         onTap: (){
                           //한개씩만 클릭되도록 하기 위함
-                          touched = [false,false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false , false, false, false];
+
                           touched[index] = !touched[index];
                           setState(() {
 
@@ -148,13 +150,13 @@ class _PlusAccountState extends State<PlusAccountScreen> {
 
                                   width: 33.43 * w_percent,
                                   height: 33.43 * h_percent,
-                                  child: Image.asset("imgs/hanabank.png"),
+                                  child: Image.asset(_bankImages[index]),
 
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top : 1 * h_percent),
-                                child: Text("하나", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color : Colors.black),),
+                                child: Text(_bankNames[index], style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color : Colors.black),),
                               )
                             ],
                           ),
